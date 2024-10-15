@@ -178,7 +178,8 @@ kubectl get svc
 kubectl get deployment
 kubectl get pods
 ```
-
+![](https://velog.velcdn.com/images/yuwankang/post/f10efbda-c173-4b09-bf50-af9752293fdd/image.png)
+![](https://velog.velcdn.com/images/yuwankang/post/5366e37f-1c60-4405-8cb0-97adad252921/image.png)
 ---
 
 ## 🗑️ 클러스터 삭제
@@ -186,8 +187,7 @@ kubectl get pods
 ```bash
 eksctl delete cluster --name ce01-myeks --region ${AWS_REGION}
 ```
-![](https://velog.velcdn.com/images/yuwankang/post/f10efbda-c173-4b09-bf50-af9752293fdd/image.png)
-![](https://velog.velcdn.com/images/yuwankang/post/5366e37f-1c60-4405-8cb0-97adad252921/image.png)
+
 
 ---
 
