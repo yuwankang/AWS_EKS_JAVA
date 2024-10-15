@@ -1,28 +1,31 @@
 
-# AWS EKS에서 Spring Boot 애플리케이션 배포
+# 🚀 AWS EKS에서 Spring Boot 애플리케이션 배포
 
-이 가이드는 Docker, Kubernetes, 그리고 AWS ECR을 사용하여 Spring Boot 애플리케이션을 Amazon EKS(Elastic Kubernetes Service)에 배포하는 방법을 설명합니다.
-
-## 목차
-1. [개요](#개요)
-2. [사전 준비](#사전-준비)
-3. [AWS CLI 설정](#aws-cli-설정)
-4. [AWS EKS 설정](#aws-eks-설정)
-5. [Spring Boot 애플리케이션 Dockerize](#spring-boot-애플리케이션-dockerize)
-6. [Amazon ECR 설정](#amazon-ecr-설정)
-7. [Kubernetes 배포](#kubernetes-배포)
-8. [배포 성공 및 실행](#배포-성공-및-실행)
-9. [결론](#결론)
+Docker, Kubernetes, 그리고 AWS ECR을 사용하여 Spring Boot 애플리케이션을 Amazon EKS(Elastic Kubernetes Service)에 배포
 
 ---
 
-## 개요
-
-이 문서는 AWS의 EKS를 활용하여 Spring Boot 애플리케이션을 배포하고, Kubernetes와 Docker를 통해 애플리케이션을 컨테이너화하는 방법을 설명합니다. 또한, ECR을 사용하여 도커 이미지를 관리하고, 배포 파이프라인을 설정하는 방법도 포함되어 있습니다.
+## 📋 목차
+- **1.개요**
+- **2. 사전 준비**
+- **3. 기술 스택**
+- **4 .AWS CLI 설정**
+- **5. AWS EKS 설정**
+- **6. Spring Boot 애플리케이션 Dockerize**
+- **7. Amazon ECR 설정**
+- **8. Kubernetes 배포**
+- **9. 배포 성공 및 실행**
+- **10. 결론**
 
 ---
 
-## 사전 준비
+## 📝 개요
+
+> Docker, Kubernetes, 그리고 AWS ECR을 사용하여 Spring Boot 애플리케이션을 Amazon EKS(Elastic Kubernetes Service)에 배포
+
+---
+
+## 🔧 사전 준비
 
 - AWS CLI 설치 및 구성
 - Docker 설치
@@ -31,7 +34,18 @@
 
 ---
 
-## AWS CLI 설정
+## 🛠️ 기술 스택
+
+- 프로그래밍 언어: Java 17 <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Java Logo" width="20"/>
+- 프레임워크: Spring Boot <img src="https://img.icons8.com/color/48/000000/spring-logo.png" alt="Spring Boot Logo" width="20"/>
+- 컨테이너화 도구: Docker <img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" alt="Docker Logo" width="20"/>
+- 클러스터 관리: Kubernetes <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg" alt="Kubernetes Logo" width="20"/>
+- 클라우드 플랫폼: AWS EKS <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS EKS Logo" width="20"/>
+- 이미지 레지스트리: AWS ECR <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS ECR Logo" width="20"/>
+
+---
+
+## ⚙️ AWS CLI 설정
 
 1. [AWS CLI 설치 가이드](https://aws.amazon.com/ko/cli/)를 참고하여 설치 후 버전을 확인합니다.
 ```bash
@@ -44,7 +58,7 @@ aws ec2 describe-instances
 
 ---
 
-## AWS EKS 설정
+## ☁️ AWS EKS 설정
 
 1. `kubectl` 설치
 ```bash
@@ -68,7 +82,7 @@ eksctl create cluster --name ce01-myeks --region ap-northeast-2
 
 ---
 
-## Spring Boot 애플리케이션 Dockerize
+## 🐳 Spring Boot 애플리케이션 Dockerize
 
 1. `Dockerfile` 작성
 ```Dockerfile
@@ -85,7 +99,10 @@ docker build -t springboot-eks .
 
 ---
 
-## Amazon ECR 설정
+## 🗂️ Amazon ECR 설정
+![](https://velog.velcdn.com/images/yuwankang/post/5d8bfabd-047c-493e-8aa3-3d04c9f01f6e/image.png)
+![](https://velog.velcdn.com/images/yuwankang/post/c0045e5b-4dc3-4743-b9eb-22f249f97e2e/image.png)
+![](https://velog.velcdn.com/images/yuwankang/post/964f4fc0-7c0c-4329-93ae-14d90eb27954/image.png)
 
 1. AWS CLI를 통해 ECR 로그인
 ```bash
@@ -105,7 +122,7 @@ aws eks --region <your-region> update-kubeconfig --name <your-cluster-name>
 
 ---
 
-## Kubernetes 배포
+## 🛠️ Kubernetes 배포
 
 1. `k8s.yaml` 작성 및 적용
 ```yaml
@@ -153,7 +170,7 @@ kubectl get pods
 
 ---
 
-## 배포 성공 및 실행
+## ✅ 배포 성공 및 실행
 
 AWS EKS 클러스터에서 애플리케이션이 성공적으로 배포된 것을 확인할 수 있습니다. 다음 명령어로 서비스와 배포 상태를 확인하세요.
 ```bash
@@ -164,9 +181,16 @@ kubectl get pods
 
 ---
 
-## 결론
+## 🗑️ 클러스터 삭제
 
-이 가이드를 통해 AWS EKS 환경에서 Spring Boot 애플리케이션을 성공적으로 배포하고 관리할 수 있습니다. Kubernetes와 ECR을 통해 애플리케이션의 확장성과 유지보수성을 높일 수 있습니다. 클러스터 삭제는 아래 명령어를 사용하세요:
 ```bash
 eksctl delete cluster --name ce01-myeks --region ${AWS_REGION}
 ```
+![](https://velog.velcdn.com/images/yuwankang/post/f10efbda-c173-4b09-bf50-af9752293fdd/image.png)
+![](https://velog.velcdn.com/images/yuwankang/post/5366e37f-1c60-4405-8cb0-97adad252921/image.png)
+
+---
+
+## 💡 결론
+
+>AWS EKS 환경에서 Spring Boot 애플리케이션을 성공적으로 배포하고 관리할 수 있습니다. Kubernetes와 ECR을 통해 애플리케이션의 확장성과 유지보수성을 높일 수 있습니다.
